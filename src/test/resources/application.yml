@@ -1,0 +1,4 @@
+caching:
+  spring:
+    percentage:
+      ttl: 1
