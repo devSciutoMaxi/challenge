@@ -1,6 +1,7 @@
-package com.tenpo.challenge.api.service;
+package com.tenpo.challenge.api.unit.controller.service;
 
 import com.tenpo.challenge.api.mock.ServiceExternalMock;
+import com.tenpo.challenge.api.service.OperationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,9 +35,9 @@ class OperationServiceTest {
     public void getPercentageNull() {
         when(serviceExternalMock.getPercentage()).thenReturn(null);
 
-        RuntimeException x = assertThrows(RuntimeException.class, () -> operationService.calculate(new BigDecimal(1), new BigDecimal(2)));
+        RuntimeException response = assertThrows(RuntimeException.class, () -> operationService.calculate(new BigDecimal(1), new BigDecimal(2)));
 
-        assertEquals("Error en el servicio para obtener el porcentaje", x.getMessage());
+        assertEquals("Error en el servicio para obtener el porcentaje", response.getMessage());
     }
 
 
