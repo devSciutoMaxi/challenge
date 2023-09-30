@@ -37,7 +37,6 @@ public class OperationService {
     private void getPercentage() throws Exception {
         int i = 0;
         do {
-            //this.percentage = null;
             this.percentage = serviceExternalMock.getPercentage();
             i++;
         } while (i < 3 && this.percentage == null);

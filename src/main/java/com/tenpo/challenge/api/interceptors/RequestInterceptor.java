@@ -1,6 +1,7 @@
 package com.tenpo.challenge.api.interceptors;
 
 
+import com.tenpo.challenge.api.util.Constants;
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.ConsumptionProbe;
@@ -24,8 +25,8 @@ public class RequestInterceptor implements HandlerInterceptor {
     private final Bucket bucket;
 
     public RequestInterceptor() {
-        Refill refill = Refill.intervally(5, Duration.ofMinutes(1));
-        Bandwidth limit = Bandwidth.classic(5, refill);
+        Refill refill = Refill.intervally(Constants.RPM, Duration.ofMinutes(1));
+        Bandwidth limit = Bandwidth.classic(Constants.RPM, refill);
         this.bucket = Bucket.builder()
                 .addLimit(limit)
                 .build();
