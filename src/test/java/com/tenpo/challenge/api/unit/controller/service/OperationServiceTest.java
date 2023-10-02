@@ -26,9 +26,10 @@ class OperationServiceTest {
 
     @Test
     public void getCalculateValid() {
-        when(serviceExternalMock.getPercentage()).thenReturn(new BigDecimal(5));
-        BigDecimal result = operationService.calculate(new BigDecimal(1), new BigDecimal(2));
+        when(serviceExternalMock.getPercentage()).thenReturn(new BigDecimal(10));
+        BigDecimal result = operationService.calculate(new BigDecimal(5), new BigDecimal(5));
         assertNotNull(result);
+        assertEquals(new BigDecimal("11"), result);
     }
 
     @Test

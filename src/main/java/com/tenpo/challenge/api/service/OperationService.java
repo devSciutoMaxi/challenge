@@ -31,7 +31,7 @@ public class OperationService {
             throw new ApiException(e.getMessage());
         }
 
-        return suma.multiply(this.percentage).divide(ONE_HUNDRED);
+        return suma.multiply(this.percentage).divide(ONE_HUNDRED).add(suma);
     }
 
     private void getPercentage() throws Exception {
