@@ -2,6 +2,7 @@ package com.tenpo.challenge.api.service;
 
 import com.tenpo.challenge.api.exceptions.ApiException;
 import com.tenpo.challenge.api.mock.ServiceExternalMock;
+import com.tenpo.challenge.api.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,6 @@ public class OperationService {
 
     private final static Logger log = LoggerFactory.getLogger(OperationService.class);
 
-    public static final BigDecimal ONE_HUNDRED = new BigDecimal(100);
-
     public OperationService() {
     }
 
@@ -31,7 +30,7 @@ public class OperationService {
             throw new ApiException(e.getMessage());
         }
 
-        return suma.multiply(this.percentage).divide(ONE_HUNDRED).add(suma);
+        return suma.multiply(this.percentage).divide(Constants.ONE_HUNDRED).add(suma);
     }
 
     private void getPercentage() throws Exception {

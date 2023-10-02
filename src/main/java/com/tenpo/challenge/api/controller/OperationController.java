@@ -16,8 +16,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,17 +42,15 @@ public class OperationController {
     @Autowired
     private LogService logService;
 
-    private final static Logger log = LoggerFactory.getLogger(OperationController.class);
-
 
     @Operation(
             summary = "Operation Add",
             description = "Recibe 2 números, los suma, y aplica una suba de un porcentaje",
-            tags = { "Challenge Tenpo" })
+            tags = {"Challenge Tenpo"})
     @ApiResponses({
-            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = OperationResponse.class), mediaType = "application/json") }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = OperationResponse.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", content = {@Content(schema = @Schema())}),
+            @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema())})})
     @PostMapping(value = "/add", produces = "application/json")
     @ResponseBody
     public ResponseEntity<OperationResponse> add(@RequestBody AddRequest request) throws JsonProcessingException {
@@ -68,11 +64,11 @@ public class OperationController {
     @Operation(
             summary = "Retrieve Adds",
             description = "Historial de todos los llamados a todos los endpoint junto con la respuesta en caso de haber sido exitoso paginada.",
-            tags = { "Challenge Tenpo" })
+            tags = {"Challenge Tenpo"})
     @ApiResponses({
-            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = LogsResponse.class), mediaType = "application/json") }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
-            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = LogsResponse.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", content = {@Content(schema = @Schema())}),
+            @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema())})})
     @RequestMapping(value = "/logs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LogsResponse> logs(
             @RequestParam(defaultValue = Constants.OFFSET, required = false) String offset,

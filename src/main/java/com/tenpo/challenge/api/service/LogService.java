@@ -23,7 +23,7 @@ public class LogService {
 
     @Async
     public void saveAsync(OperationResponse response) throws JsonProcessingException {
-        ObjectMapper Obj = new ObjectMapper();
-        save(Obj.writeValueAsString(response));
+        ObjectMapper obj = new ObjectMapper();
+        save(obj.writeValueAsString(response));
     }
 }

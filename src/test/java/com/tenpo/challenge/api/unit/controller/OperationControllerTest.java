@@ -19,7 +19,7 @@ import org.springframework.http.ResponseEntity;
 import java.math.BigDecimal;
 
 import static org.junit.Assert.assertThrows;
-import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = {OperationController.class})
 public class OperationControllerTest {
@@ -42,15 +42,18 @@ public class OperationControllerTest {
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        verify(logService,times(1)).saveAsync(any(OperationResponse.class));
     }
 
     @Test
-    public void addApiException() {
+    public void addApiException() throws JsonProcessingException {
         doThrow(new ApiException("Error en el servicio para obtener el porcentaje")).when(operationService).calculate(new BigDecimal(1), new BigDecimal(2));
 
         ApiException apiException = assertThrows(ApiException.class, () -> operationController.add(new AddRequest(1,2)));
         Assertions.assertEquals(Integer.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()), apiException.getStatusCode());
         Assertions.assertEquals("Error en el servicio para obtener el porcentaje", apiException.getMessage());
+        verify(logService,never()).saveAsync(any(OperationResponse.class));
+
     }
 
 }

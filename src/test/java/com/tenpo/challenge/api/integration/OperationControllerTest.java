@@ -23,7 +23,6 @@ public class OperationControllerTest {
 
     private AddRequest request;
 
-
     @Test
     public void addLogOk() throws Exception {
         Obj = new ObjectMapper();
@@ -44,7 +43,6 @@ public class OperationControllerTest {
                         .content(Obj.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is4xxClientError());
-
     }
 
     @Test
