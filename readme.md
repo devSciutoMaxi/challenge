@@ -31,6 +31,7 @@
 5. Debes agregar un Postman Collection o Swagger para que probemos tu API
 
 6. Tu código debe estar disponible en un repositorio público, junto con las instrucciones de cómo desplegar el servicio y cómo utilizarlo.
+7. Tener en cuenta que la aplicación funcionará de la forma de un sistema distribuido donde puede existir más de una réplica del servicio funcionando en paralelo.
 
 
 #### Solución planteada
@@ -46,4 +47,6 @@ $ ./mvnw packages
 $ docker-compose up
 ```  
 - Usamos swagger para documentar la api  http://localhost:8080/swagger-ui/index.html  y tambien comparto una coleccion de postman
+-Para utilizar la app podemos usar la collection de postman o por la swagger-ui
 
+- Con respecto a que la app funcionara en un sistema distribuido pense en lo siguiente. Podemos tener un load balancer adelante de la app para manejar la distruibucion. Tambien para un mejor manejo de cache centralizado podemos utilizar redis.
