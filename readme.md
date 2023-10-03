@@ -38,8 +38,11 @@
 - La api recibe dos parametros para sumar dos numeros. Tenemos un servicio mockeado que devuelve un numero aleatorio el cual se guarda en cache por 30 minutos
 - Usamos interceptor para controlar los rpm del endpoint add y guardamos todo en forma async. (usamos la libreria bucket4j y @async de spring config)
 - Agregamos test unitarios y un test de integration
-- Para levantar la app usamos docker compose
+- Para levantar la app usamos docker compose y java 17
 ```sh
+#generamos el jar
+$ ./mvnw packages
+#corremos el docker compose
 $ docker-compose up
 ```  
 - Usamos swagger para documentar la api  http://localhost:8080/swagger-ui/index.html  y tambien comparto una coleccion de postman
