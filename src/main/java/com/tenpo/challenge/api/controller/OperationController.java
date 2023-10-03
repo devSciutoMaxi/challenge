@@ -50,6 +50,7 @@ public class OperationController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = OperationResponse.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "404", content = {@Content(schema = @Schema())}),
+            @ApiResponse(responseCode = "429", content = {@Content(schema = @Schema())}),
             @ApiResponse(responseCode = "500", content = {@Content(schema = @Schema())})})
     @PostMapping(value = "/add", produces = "application/json")
     @ResponseBody
